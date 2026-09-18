@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Pocket Empire — Dera Elvis</title>
+<meta name="description" content="A tiny turn-based strategy game: grow a city, research tech, and out-fight or out-tech a rival empire. Built while learning JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Start screen -->
+<div id="startScreen" class="screen">
+  <div class="start-card">
+    <p class="eyebrow">Pocket Empire</p>
+    <h1>Grow an empire in your pocket</h1>
+    <p class="start-tagline">
+      A tiny turn-based strategy game inspired by old lite mobile 4X games:
+      grow your city, research tech, build an army, and beat a rival empire —
+      either by conquest or by simply out-developing them.
+    </p>
+    <ul class="start-rules">
+      <li>Tap your city to build units and buildings.</li>
+      <li>Tap a unit, then tap a tile to move or attack.</li>
+      <li>Research unlocks automatically as your science adds up.</li>
+      <li>Win by capturing the enemy city — or have the stronger empire after 50 turns.</li>
+    </ul>
+    <button id="newGameBtn" class="btn btn-primary" type="button">New game</button>
+  </div>
+</div>
+
+<!-- Game screen -->
+<div id="gameScreen" class="screen hidden">
+  <header class="hud">
+    <span id="turnCounter" class="hud-turn">Turn 1</span>
+    <span class="hud-stat" title="Production per turn">⚒️ <span id="prodStat">0</span></span>
+    <span class="hud-stat" title="Science per turn">🔬 <span id="sciStat">0</span></span>
+    <button id="endTurnBtn" class="btn btn-primary btn-sm" type="button">End turn</button>
+  </header>
+
+  <div class="board-wrap">
+    <div id="board" class="board" role="grid" aria-label="Game map"></div>
+  </div>
+
+  <div class="bottom-bar">
+    <button id="techBtn" class="btn btn-secondary btn-sm" type="button">Tech</button>
+    <p id="selectionInfo" class="selection-info">Tap a unit or your city (🏰) to begin.</p>
+    <button id="logBtn" class="btn btn-secondary btn-sm" type="button">Log</button>
+  </div>
+</div>
+
+<!-- Build modal -->
+<div id="buildModal" class="modal hidden">
+  <div class="modal-card">
+    <h2>Build in city</h2>
+    <p class="modal-subtitle" id="buildProgressLabel"></p>
+    <div id="buildOptions" class="build-options"></div>
+    <button class="btn btn-outline modal-close" data-close="buildModal" type="button">Close</button>
+  </div>
+</div>
+
+<!-- Tech modal -->
+<div id="techModal" class="modal hidden">
+  <div class="modal-card">
+    <h2>Technology</h2>
+    <p class="modal-subtitle" id="techProgressLabel"></p>
+    <div id="techList" class="tech-list"></div>
+    <button class="btn btn-outline modal-close" data-close="techModal" type="button">Close</button>
+  </div>
+</div>
+
+<!-- Log modal -->
+<div id="logModal" class="modal hidden">
+  <div class="modal-card">
+    <h2>Event log</h2>
+    <div id="logList" class="log-list"></div>
+    <button class="btn btn-outline modal-close" data-close="logModal" type="button">Close</button>
+  </div>
+</div>
+
+<!-- End game modal -->
+<div id="endModal" class="modal hidden">
+  <div class="modal-card">
+    <h2 id="endTitle">Victory!</h2>
+    <p id="endMessage"></p>
+    <button id="restartBtn" class="btn btn-primary" type="button">Play again</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>
+    &copy; <span id="year"></span> Dera Elvis. Part of my
+    <a href="https://eljoe45.github.io">learning-in-public portfolio</a>.
+  </p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
